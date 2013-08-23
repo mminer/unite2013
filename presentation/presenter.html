@@ -156,7 +156,7 @@
 
 			multiplex: {
 				// Example values. To generate your own, see the socket.io server instructions.
-				secret: null,
+				secret: '13771090776701006109', // Obtained from the socket.io server. Gives this (the master) control of the presentation
 				id: '2462a0fc9b7bb943', // Obtained from socket.io server
 				url: 'revealjs.jit.su:80' // Location of socket.io server
 			},
@@ -164,7 +164,7 @@
 			// Optional libraries used to extend on reveal.js
 			dependencies: [
 				{ src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js', async: true },
-				{ src: 'plugin/multiplex/client.js', async: true },
+				{ src: 'plugin/multiplex/master.js', async: true },
 
 
 				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
