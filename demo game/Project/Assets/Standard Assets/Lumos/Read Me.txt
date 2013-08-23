@@ -1,0 +1,20 @@
+Lumos
+=====
+
+TODO: Write introduction.
+
+Current version: 1.0
+
+
+Getting Started
+---------------
+
+TODO: Write getting started instructions.
+
+
+Contact Us
+----------
+
+If you run into a problem or have a suggestion, let us know by emailing
+support@lumospowered.com or by visiting our support page at
+http://support.lumospowered.com.
