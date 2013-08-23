@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{427BA448-70BB-A633-56AF-AA4696A24CCB}</ProjectGuid>
+	<ProjectGuid>{CB189694-943F-E2EC-220F-4F5551F23965}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -44,12 +44,32 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Demo.cs" />
-     <None Include="Assets\Standard Assets\Lumos\Read Me.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{CC01158A-8AD6-B429-6F68-3634267D760C}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\Detonator.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorBurstEmitter.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorCloudRing.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorFireball.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorForce.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorGlow.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorHeatwave.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorLight.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorShockwave.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorSmoke.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorSound.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorSparks.cs" />
+     <Compile Include="Assets\Prefabs\Detonator Explosion Framework\System\DetonatorSpray.cs" />
+     <Compile Include="Assets\Scripts\Game\Destroy.cs" />
+     <Compile Include="Assets\Scripts\Game\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Game\HUD.cs" />
+     <Compile Include="Assets\Scripts\Game\Health.cs" />
+     <Compile Include="Assets\Scripts\Game\KillVolume.cs" />
+     <Compile Include="Assets\Scripts\Game\Move.cs" />
+     <Compile Include="Assets\Scripts\Game\Player.cs" />
+     <Compile Include="Assets\Scripts\Game\Projectile.cs" />
+     <Compile Include="Assets\Scripts\Game\Rotate.cs" />
+     <Compile Include="Assets\Scripts\SecureScore\Score.cs" />
+     <Compile Include="Assets\Scripts\SecureScore\SecureScore.cs" />
+     <None Include="Assets\Prefabs\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
