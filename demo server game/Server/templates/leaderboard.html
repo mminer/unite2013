@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Leaderboard{% endblock %}
+
+{% block content %}
+    <div class="container">
+	    <h2>Leaderboard</h2>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Score</th>
+                <th>Name</th>
+                <th>Date</th>
+            </tr>
+    	    {% for entry in scores %}
+    	    <tr>
+                <td>{{ entry.score }}</td>
+                <td>{{ entry.name }}</td>
+            </tr>
+    	    {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

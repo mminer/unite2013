@@ -1,0 +1,14 @@
+/* TEAM */
+Hacker 1: Matthew Miner
+Site: http://www.matthewminer.com/
+Twitter: @matthewminer
+Location: Waterloo, Canada
+
+Hacker 2: Brad Keys
+Site: http://www.bradkeys.com/
+Twitter: @bradkeys
+Location: Toronto, Canada
+
+/* SITE */
+Components: jQuery, jQuery UI, Underscore.js, Backbone.js, Highcharts, DataTables, SWFObject
+Software: BBEdit, TextMate
