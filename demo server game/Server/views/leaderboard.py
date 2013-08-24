@@ -1,7 +1,7 @@
 import json
 import webapp2
 from models import LeaderboardEntry
-from util import view
+import view
 
 __copyright__ = "Copyright 2012, Rebel Hippo Inc."
 
