@@ -6,6 +6,7 @@ public class LeaderboardGUI : MonoBehaviour {
 	string leaderboardId = "demo";
 	string userName = "Matthew";
 	string score = "1";
+	string result = "";
 	float width = 200f;
 	float margin = 10f;
 	
@@ -45,6 +46,24 @@ public class LeaderboardGUI : MonoBehaviour {
 		if (GUILayout.Button("Submit Score", GUILayout.Width(width))) {
 			SubmitScore();
 		}
+		
+		// View Scores
+		if (GUILayout.Button("View Scores", GUILayout.Width(width))) {
+			ViewScores();
+		}
+		
+		GUILayout.Space(margin);
+		
+		GUILayout.Label(result);
+	}
+	
+	void ViewScores ()
+	{
+		if (leaderboardId.Length == 0) {
+			return;
+		}
+		
+		Application.OpenURL(LeaderboardAPI.url + leaderboardId);
 	}
 	
 	void SubmitScore ()
@@ -55,9 +74,9 @@ public class LeaderboardGUI : MonoBehaviour {
 	void OnScoreRecorded (bool success)
 	{
 		if (success) {
-			Debug.Log("Score recorded!");	
+			result = "Score recorded!";	
 		} else {
-			Debug.Log("Unable to record score");
+			result = "Unable to record score";
 		}
 	}
 	
