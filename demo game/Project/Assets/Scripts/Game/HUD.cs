@@ -54,6 +54,10 @@ public class HUD : MonoBehaviour {
 				if (GUILayout.Button("Secure: " + GameManager.player.useSecureScore, GUILayout.Width(width))) {
 					GameManager.player.useSecureScore = !GameManager.player.useSecureScore;
 				}
+		
+				if (GUILayout.Button("Hashed: " + GameManager.player.useHashedScore, GUILayout.Width(width))) {
+					GameManager.player.useHashedScore = !GameManager.player.useHashedScore;
+				}
 			
 				// Submit
 				if (GUILayout.Button("Submit Score", GUILayout.Width(width))) {

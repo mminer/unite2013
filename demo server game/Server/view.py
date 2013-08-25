@@ -1,10 +1,5 @@
-"""Renders templates for display to the user."""
-
 from google.appengine.api import users
 import jinja2
-
-__author__ = "Matthew Miner"
-__copyright__ = "Copyright 2012, Rebel Hippo Inc."
 
 
 jinja_environment = jinja2.Environment(

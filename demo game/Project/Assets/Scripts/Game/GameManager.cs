@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 	
+	public string secretKey = "";
 	public GameObject[] asteroids;
 	public GameObject[] enemies;
 	public int maxEnemies = 8;
@@ -11,12 +12,11 @@ public class GameManager : MonoBehaviour {
 	public float difficultyIncreaseInterval = 5f;
 	
 	public static Player player;
-	
 	static float randomSpawnInterval;
 	static GameObject[] spawnPoints;
 	static GameObject[] asteroidSpawnPoints;
 	
-	static GameManager instance;
+	public static GameManager instance;
 	GameManager () {}
 	
 	void Awake ()

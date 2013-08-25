@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	public GameObject projectile;
 	public Transform projectileSpawnPoint;
 	public bool useSecureScore = true;
+	public bool useHashedScore = false;
 	public Health health;
 	
 	Vector3 translation;

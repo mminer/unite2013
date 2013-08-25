@@ -25,5 +25,6 @@ class MainHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/leaderboard/(.*)', leaderboard.IndexHandler)
+    ('/leaderboard/(.*)', leaderboard.IndexHandler),
+    ('/leaderboard-hash/(.*)', leaderboard.HashedScoreHandler),
 ], debug=True)

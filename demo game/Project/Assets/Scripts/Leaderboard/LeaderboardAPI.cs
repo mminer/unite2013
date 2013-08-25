@@ -3,10 +3,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Security.Cryptography;
 
 public class LeaderboardAPI 
 {
 	public static string url = "http://localhost:9086/leaderboard/";
+	public static string hashedUrl = "http://localhost:9086/leaderboard-hash/";
 	
 	public static void RecordScore (string leaderboardId, string name, int score, Action<bool> callback)
 	{
@@ -18,11 +20,15 @@ public class LeaderboardAPI
 	/// </summary>
 	static IEnumerator DoRequest (string leaderboardId, string name, int score, Action<bool> callback)
 	{
-		var api = url + leaderboardId;
+		var api = GameManager.player.useHashedScore ? hashedUrl + leaderboardId : url + leaderboardId;
 		var parameters = new Hashtable() {
 			{ "name", name },
 			{ "score", score }
 		};
+		
+		if (GameManager.player.useHashedScore) {
+			parameters["hash"] = GetHash(score.ToString(), GameManager.instance.secretKey);
+		}
 		
 		var postData = SerializePostData(parameters);
 
@@ -61,6 +67,14 @@ public class LeaderboardAPI
 
 		var postData = Encoding.ASCII.GetBytes(json);
 		return postData;
+	}
+	
+	static string GetHash (string score, string secretKey)
+	{
+		var sha1 = SHA1.Create();
+		var hash = sha1.ComputeHash(Encoding.Default.GetBytes(score + secretKey));
+		string hexHash = BitConverter.ToString(hash).Replace("-", "").ToLower();
+		return hexHash;
 	}
 
 }
