@@ -78,7 +78,7 @@ public class HUD : MonoBehaviour {
 			GUILayout.EndVertical();
 		
 			GUILayout.Space(margin);
-			GUILayout.EndHorizontal();
+		GUILayout.EndHorizontal();
 		
 		// Try again button
 		if (GameManager.player.health.val <= 0) {
