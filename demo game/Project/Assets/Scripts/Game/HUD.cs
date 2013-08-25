@@ -6,34 +6,38 @@ public class HUD : MonoBehaviour {
 	public Texture2D healthIcon;
 	public GUISkin guiSkin;
 	
+	float width = 100f;
+	float margin = 10f;
+	string result = "";
+	string leaderboardId = "demo-leaderboard";
+	static HUD instance;
+	HUD () {}
+	
+	
+	void Awake ()
+	{
+		instance = this;
+	}	
 	
 	void OnGUI ()
 	{
+		var defaultSkin = GUI.skin;
 		GUI.skin = guiSkin;
 		
-		GUILayout.Space(10f);
+		GUILayout.Space(margin);
 		
 		// Health Bar and Secure Button
 		GUILayout.BeginHorizontal(GUILayout.Width(Screen.width));
-			GUILayout.Space(10f);
+			GUILayout.Space(margin);
 			
 			// Health icons 
 			for (var health = 0; health < GameManager.player.health.val; health++) {
 				GUILayout.Label(healthIcon, GUILayout.Width(35), GUILayout.Height(35));
-				GUILayout.Space(10f);
+				GUILayout.Space(margin);
 			}
 		
 			GUILayout.FlexibleSpace();
 		
-			if (GUILayout.Button("Secure: " + GameManager.player.useSecureScore)) {
-				GameManager.player.useSecureScore = !GameManager.player.useSecureScore;
-			}
-		
-			GUILayout.Space(10f);
-		GUILayout.EndHorizontal();
-		
-		// Score
-		GUILayout.BeginHorizontal();
 			int score;
 		
 			if (GameManager.player.useSecureScore) {
@@ -41,8 +45,36 @@ public class HUD : MonoBehaviour {
 			} else {
 				score = GameManager.player.insecureScore;
 			}
+			
 			GUILayout.Label("Score: " + score);
-		GUILayout.EndHorizontal();
+		
+			GUILayout.FlexibleSpace();
+	
+			GUILayout.BeginVertical();
+				if (GUILayout.Button("Secure: " + GameManager.player.useSecureScore, GUILayout.Width(width))) {
+					GameManager.player.useSecureScore = !GameManager.player.useSecureScore;
+				}
+			
+				// Submit
+				if (GUILayout.Button("Submit Score", GUILayout.Width(width))) {
+					SubmitScore();
+				}
+				
+				// View Scores
+				if (GUILayout.Button("View Scores", GUILayout.Width(width))) {
+					ViewScores();
+				}
+				
+				GUILayout.Space(margin);
+				
+				GUI.skin = defaultSkin;
+				GUILayout.Label(result);
+				GUI.skin = guiSkin;
+		
+			GUILayout.EndVertical();
+		
+			GUILayout.Space(margin);
+			GUILayout.EndHorizontal();
 		
 		// Try again button
 		if (GameManager.player.health.val <= 0) {
@@ -73,5 +105,33 @@ public class HUD : MonoBehaviour {
 				GUILayout.FlexibleSpace();
 			GUILayout.EndVertical();
 		}
+	}
+	
+	void ViewScores ()
+	{		
+		Application.OpenURL(LeaderboardAPI.url + leaderboardId);
+	}
+	
+	void SubmitScore ()
+	{
+		LeaderboardAPI.RecordScore(leaderboardId, "Brad Keys", System.Convert.ToInt32(GameManager.player.score.val), OnScoreRecorded);
+	}
+				
+	void OnScoreRecorded (bool success)
+	{
+		if (success) {
+			result = "Recorded";	
+		} else {
+			result = "Failed";
+		}
+	}
+	
+	/// <summary>
+	/// Executes a coroutine.
+	/// </summary>
+	/// <param name="routine">The coroutine to execute.</param>
+	public static Coroutine RunRoutine (IEnumerator routine)
+	{
+		return instance.StartCoroutine(routine);
 	}
 }
