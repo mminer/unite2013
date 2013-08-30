@@ -138,7 +138,7 @@
 				</ul>
 
 				<aside class="notes">
-					Demonstrate modifying a score using The Cheat.
+					Demonstrate modifying a score using <a href="http://zorg.tejat.net/programs/">Bit Slicer</a>.
 				</aside>
 			</section>
 
@@ -202,6 +202,9 @@ int score
 						<li>Clumsy API</li>
 						<li>Only available on desktop (i.e. not mobile, web)</li>
 					</ul>
+					<aside class="notes">
+						Requires marshalling; unavailable on mobile&rsquo;s AOT (ahead of time) compiler.
+					</aside>
 				</section>
 			</section>
 
@@ -248,9 +251,9 @@ int val
 {
     get { return _val ^ key; }
     set {
-		key = Random.Range(0, 2147483647);
-		_val = value ^ key;
-	}
+        key = Random.Range(0, 2147483647);
+        _val = value ^ key;
+    }
 }
 					</code></pre>
 					<p>Next value of <code>val</code> becomes unpredictable</p>
@@ -375,6 +378,10 @@ def handle_request(request):
 					</pre></code>
 
 					<p><small>(Python example)</small></p>
+
+					<aside class="notes">
+						Show demonstration using checksum.
+					</aside>
 				</section>
 				<section>
 					<h3>Tips</h3>
@@ -406,11 +413,30 @@ def handle_request(request):
 			</section>
 
 			<section>
-				<h2>Other Considerations</h2>
+				<h2>Never Trust The Client</h2>
 				<ul>
-					<li>PlayerPrefs: don&rsquo;t store important information in plaintext</li>
-
+					<li>Assume by default player is sneaky</li>
+					<li>Check that player has permission to perform action</li>
+					<li>Be vigilant about removing hacked scores, banning cheaters</li>
+					<li>Implement reporting system</li>
 				</ul>
+				<aside class="notes">
+					No code samples here; cheat checks will depend on server technology.
+				</aside>
+			</section>
+
+			<section>
+				<h2>Things to Watch For</h2>
+				<ul>
+					<li>In FPS, does player move inhumanly fast?</li>
+					<li>Do they have more ammo than level provides?</li>
+					<li>Is score impossibly high?</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Other Considerations</h2>
+				<p>There&rsquo;s always a weak spot&hellip;</p>
 			</section>
 
 			<section>
@@ -432,7 +458,10 @@ def handle_request(request):
 					<li>Use if you want to, but it&rsquo;s not silver bullet</li>
 				</ul>
 				<aside class="notes">
-					Ask audience how many use or have tried obfuscation in their games.
+					<ul>
+						<li>Demonstrate reflecting DLL from game.</li>
+						<li>Ask audience how many use or have tried obfuscation in their games.</li>
+					</ul>
 				</aside>
 			</section>
 
@@ -479,7 +508,7 @@ def handle_request(request):
 			multiplex: {
 				// Example values. To generate your own, see the socket.io server instructions.
 				secret: null,
-				id: '2462a0fc9b7bb943', // Obtained from socket.io server
+				id: 'bb0ca1a2b079d1e0', // Obtained from socket.io server
 				url: 'revealjs.jit.su:80' // Location of socket.io server
 			},
 
@@ -492,7 +521,7 @@ def handle_request(request):
 				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 				//{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 				//{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				//{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 				//{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 			]
