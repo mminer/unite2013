@@ -100,6 +100,23 @@
 					<li>Protecting game &rarr; server communication</li>
 					<li>Enforcing rules in multiplayer games</li>
 				</ol>
+				<aside class="notes">
+					Won&rsquo;t be talking about preventing piracy; topic of its own.
+				</aside>
+			</section>
+
+			<section>
+				<h2>The Reality</h2>
+				<ul>
+					<li>Impossible to stop all hacks</li>
+					<li>Hacking games a game itself</li>
+					<li>But, we can make it more difficult</li>
+				</ul>
+				<img src="img/hackedgamessite.png" alt="hackedfreegames.com Screenshot" />
+
+				<aside class="notes">
+					Screenshot from hackedfreegames.com.
+				</aside>
 			</section>
 
 			<section>
@@ -115,7 +132,7 @@
 			<section>
 				<h2>Memory Hacks</h2>
 				<ul>
-					<li>Changing in-game variables trivial with <a href="http://www.cheatengine.org/">Cheat Engine</a> et al.</li>
+					<li>Changing game variables trivial with <a href="http://www.cheatengine.org/">Cheat Engine</a> et al.</li>
 					<li>Virtually impossible to detect</li>
 					<li>Scores, health, ammo easily modified</li>
 				</ul>
@@ -220,6 +237,23 @@ void Awake ()
 						<code>val = 200</code> &rArr; <code>_val == 10183</code>
 					</p>
 					<p>The value becomes much more difficult to isolate and modify.</p>
+				</section>
+				<section>
+					<h3>Implementation 2</h3>
+					<pre><code data-trim contenteditable class="cs">
+int key;
+
+int _val;
+int val
+{
+    get { return _val ^ key; }
+    set {
+		key = Random.Range(0, 2147483647);
+		_val = value ^ key;
+	}
+}
+					</code></pre>
+					<p>Next value of <code>val</code> becomes unpredictable</p>
 				</section>
 				<section>
 					<h3>Pros and Cons</h3>
@@ -372,12 +406,34 @@ def handle_request(request):
 			</section>
 
 			<section>
+				<h2>Other Considerations</h2>
+				<ul>
+					<li>PlayerPrefs: don&rsquo;t store important information in plaintext</li>
+
+				</ul>
+			</section>
+
+			<section>
+				<h2>PlayerPrefs</h2>
+				<ul>
+					<li>Stored in plain XML; easily modifiable</li>
+					<li>Encryption available in <code>System.Security.Cryptography</code></li>
+					<li>An XOR against a sufficiently long string will do the trick also<li>
+					<li>Again relies on ability to hide secret key</li>
+				</ul>
+				<img src="img/playerprefs.png" alt="PlayerPrefs XML" />
+			</section>
+
+			<section>
 				<h2>What About Obfuscation?</h2>
 				<ul>
 					<li>Security strength shouldn&rsquo;t depend on ability to keep algorithms secret</li>
 					<li>Can cause its own host of problems (unrelated to security)</li>
 					<li>Use if you want to, but it&rsquo;s not silver bullet</li>
 				</ul>
+				<aside class="notes">
+					Ask audience how many use or have tried obfuscation in their games.
+				</aside>
 			</section>
 
 			<section>
