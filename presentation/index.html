@@ -444,7 +444,7 @@ def handle_request(request):
 				<ul>
 					<li>Stored in plain XML; easily modifiable</li>
 					<li>Encryption available in <code>System.Security.Cryptography</code></li>
-					<li>An XOR against a sufficiently long string will do the trick also<li>
+					<li>An XOR against a sufficiently long string will do the trick also</li>
 					<li>Again relies on ability to hide secret key</li>
 				</ul>
 				<img src="img/playerprefs.png" alt="PlayerPrefs XML" />
@@ -489,6 +489,7 @@ def handle_request(request):
 				<h1>Thank You</h1>
 				<p>Visit us: <a href="https://www.lumospowered.com/">www.lumospowered.com</a></p>
 				<p>Tweet us: <a href="https://twitter.com/lumospowered">@lumospowered</a></p>
+				<p><a href="http://unite2013.lumospowered.com/">unite2013.lumospowered.com</a></p>
 			</section>
 
 		</div>
@@ -520,7 +521,6 @@ def handle_request(request):
 			dependencies: [
 				{ src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js', async: true },
 				{ src: 'plugin/multiplex/master.js', async: true },
-			//	{ src: 'plugin/multiplex/client.js', async: true },
 
 
 				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
